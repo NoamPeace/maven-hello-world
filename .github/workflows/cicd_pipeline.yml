@@ -24,6 +24,10 @@ jobs:
         cache: maven
     - name: change directory to my-app
       run: cd my-app
+    - name: list directories
+      run: ls
+    - name: print current dir
+      run: pwd
     - name: Bump jar revision
       run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
     - name: Build with Maven
