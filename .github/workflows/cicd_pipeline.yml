@@ -28,9 +28,9 @@ jobs:
 #      run: ls
 #    - name: print current dir
 #      run: pwd
-    - name: Bump jar revision
-      working-directory: ./my-app
-      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+#    - name: Bump jar revision
+#      working-directory: ./my-app
+#      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
     - name: Build with Maven
       working-directory: ./my-app
       run: mvn -B package --file pom.xml
