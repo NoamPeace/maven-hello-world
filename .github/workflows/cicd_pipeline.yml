@@ -33,4 +33,4 @@ jobs:
 #      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
     - name: Build with Maven
       working-directory: ./my-app
-      run: mvn -B package --file pom.xml
+      run: mvn package --file pom.xml
