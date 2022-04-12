@@ -80,7 +80,7 @@ jobs:
           path: target
           
     - name: Docker build
-      run: docker build . -t NoamPeace/hello-world-maven:1.0.${{ github.run_number }}
+      run: docker build . -t noampeace/hello-world-maven:1.0.${{ github.run_number }}
         
     - name: Docker Login
       uses: docker/login-action@v1.14.1
@@ -89,7 +89,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Push to DockerHub
-      run: docker push NoamPeace/hello-world-maven:1.0.${{ github.run_number }}
+      run: docker push noampeace/hello-world-maven:1.0.${{ github.run_number }}
       
       
       
@@ -100,5 +100,5 @@ jobs:
 
     steps:
     - name: Run container
-      run: docker run NoamPeace/hello-world-maven:1.0.${{ github.run_number }}
+      run: docker run noampeace/hello-world-maven:1.0.${{ github.run_number }}
         
