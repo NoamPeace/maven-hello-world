@@ -30,6 +30,7 @@ jobs:
         cache: maven
 #    - name: print all environment variables
 #      run: env
+
 #    - name: Bump jar revision
 #      working-directory: ${{env.working-directory}}
 #      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
