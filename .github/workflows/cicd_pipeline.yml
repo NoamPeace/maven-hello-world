@@ -51,6 +51,6 @@ jobs:
       run: mvn package --file pom.xml
       
     - name: List directory
-      working-directory: ${{ env.working-directory }}
+      working-directory: ${{ env.working-directory }}/target
       run: ls
       
