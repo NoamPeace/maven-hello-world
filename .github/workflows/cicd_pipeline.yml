@@ -31,7 +31,7 @@ jobs:
 #    - name: print all environment variables
 #      run: env
 
-    - name: Bump jar revision and package
+    - name: Bump jar revision
       working-directory: ${{ env.working-directory }}
       run: mvn versions:set -DnewVersion=1.0.${{ github.run_number }}-SNAPSHOT
 
