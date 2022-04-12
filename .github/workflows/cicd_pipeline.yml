@@ -14,6 +14,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      working-directory: ./my-app
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 8
@@ -25,19 +28,20 @@ jobs:
 #    - name: print all environment variables
 #      run: env
 #    - name: Bump jar revision
-#      working-directory: ./my-app
+#      working-directory: ${{env.working-directory}}
 #      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
 
     - name: Bump Version
-#     working-directory: ./my-app
+#     working-directory: ${{env.working-directory}}
       id: bump
       uses: nnichols/maven-version-bump-action@v3
       with:
          github-token: ${{ secrets.github_token }}
 
     - name: Print Version
+      working-directory: ${{env.working-directory}}
       run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
      
     - name: Build with Maven
-      working-directory: ./my-app
+      working-directory: ${{env.working-directory}}
       run: mvn package --file pom.xml
