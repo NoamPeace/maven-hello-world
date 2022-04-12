@@ -16,21 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: Set up JDK 8
       uses: actions/setup-java@v3
       with:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
-#    - name: change directory to my-app
-#      run: cd my-app
-#    - name: list directories
-#      run: ls
-#    - name: print current dir
-#      run: pwd
-#    - name: Bump jar revision
-#      working-directory: ./my-app
-#      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+    - name: Bump jar revision
+      working-directory: ./my-app
+      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
     - name: Build with Maven
       working-directory: ./my-app
       run: mvn package --file pom.xml
