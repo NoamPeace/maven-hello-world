@@ -22,11 +22,21 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
-    - name: print all environment variables
-      run: env
-    - name: Bump jar revision
-      working-directory: ./my-app
-      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+#    - name: print all environment variables
+#      run: env
+#    - name: Bump jar revision
+#      working-directory: ./my-app
+#      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+
+    - name: Bump Version
+      id: bump
+      uses: nnichols/maven-version-bump-action@v3
+      with:
+       github-token: ${{ secrets.github_token }}
+
+    - name: Print Version
+      run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
+     
     - name: Build with Maven
       working-directory: ./my-app
       run: mvn package --file pom.xml
