@@ -30,10 +30,10 @@ jobs:
 
     - name: Bump Version
       id: bump
-      working-directory: ./my-app
       uses: nnichols/maven-version-bump-action@v3
       with:
          github-token: ${{ secrets.github_token }}
+      working-directory: ./my-app
 
     - name: Print Version
       run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
