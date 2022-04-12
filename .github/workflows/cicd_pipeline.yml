@@ -31,20 +31,20 @@ jobs:
 #    - name: print all environment variables
 #      run: env
 
-#    - name: Bump jar revision
-#      working-directory: ${{env.working-directory}}
-#      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
-
-    - name: Bump Version
-      id: bump
-      uses: nnichols/maven-version-bump-action@v3
-      with:
-         github-token: ${{ secrets.github_token }}
-         pom-path: ./my-app
-         
-    - name: Print Version
+    - name: Bump jar revision
       working-directory: ${{env.working-directory}}
-      run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
+      run: mvn versions:set -DnewVersion=${{ strategy.job-index }}
+
+#    - name: Bump Version
+#      id: bump
+#      uses: nnichols/maven-version-bump-action@v3
+#      with:
+#         github-token: ${{ secrets.github_token }}
+#         pom-path: ./my-app
+         
+#    - name: Print Version
+#      working-directory: ${{env.working-directory}}
+#      run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
      
     - name: Build with Maven
       working-directory: ${{env.working-directory}}
