@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: my-app
+        working-directory: ./my-app
     env:
       working-directory: ./my-app
 
