@@ -31,9 +31,9 @@ jobs:
 #    - name: print all environment variables
 #      run: env
 
-    - name: Bump jar revision
+    - name: Bump jar revision and package
       working-directory: ${{env.working-directory}}
-      run: mvn versions:set -DnewVersion=${{ github.run_id }}
+      run: mvn package versions:set -DnewVersion=1.0.${{ github.run_number }}-SNAPSHOT
 
 #    - name: Bump Version
 #      id: bump
@@ -46,7 +46,7 @@ jobs:
 #      working-directory: ${{env.working-directory}}
 #      run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
      
-    - name: Build with Maven
-      working-directory: ${{env.working-directory}}
-      run: mvn package --file pom.xml
+#    - name: Build with Maven
+#      working-directory: ${{env.working-directory}}
+#      run: mvn package --file pom.xml
       
