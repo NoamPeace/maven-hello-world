@@ -32,8 +32,8 @@ jobs:
 #      run: env
 
     - name: Bump jar revision and package
-      working-directory: ${{env.working-directory}}
-      run: mvn package versions:set -DnewVersion=1.0.${{ github.run_number }}-SNAPSHOT
+      working-directory: ${{ env.working-directory }}
+      run: mvn versions:set -DnewVersion=1.0.${{ github.run_number }}-SNAPSHOT
 
 #    - name: Bump Version
 #      id: bump
@@ -43,10 +43,14 @@ jobs:
 #         pom-path: ./my-app
          
 #    - name: Print Version
-#      working-directory: ${{env.working-directory}}
-#      run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
+#      working-directory: ${{ env.working-directory }}
+#      run: "echo 'New Version: ${{ steps.bump.outputs.version }}'"
      
-#    - name: Build with Maven
-#      working-directory: ${{env.working-directory}}
-#      run: mvn package --file pom.xml
+    - name: Build with Maven
+      working-directory: ${{ env.working-directory }}
+      run: mvn package --file pom.xml
+      
+    - name: List directory
+      working-directory: ${{ env.working-directory }}
+      run: ls
       
