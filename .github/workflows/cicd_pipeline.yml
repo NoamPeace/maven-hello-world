@@ -33,7 +33,7 @@ jobs:
 
     - name: Bump jar revision
       working-directory: ${{env.working-directory}}
-      run: mvn versions:set -DnewVersion=${{ strategy.job-index }}
+      run: mvn versions:set -DnewVersion=${{ github.run_id }}
 
 #    - name: Bump Version
 #      id: bump
